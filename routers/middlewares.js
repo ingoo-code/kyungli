@@ -14,3 +14,12 @@ module.exports.isNotLoggedIn = (req,res,next) =>{
         res.redirect(`/?error=${message}`);
     }
 }
+
+module.exports.isAdminIn = (req,res,next) =>{
+    if(req.user.dataValues.userLevel === 1){
+        next();
+    } else {
+        const message = encodeURIComponent('관리자등급 이상만 접근 가능합니다.');
+        res.redirect(`/?error=${message}`);
+    }
+}
