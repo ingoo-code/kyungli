@@ -1,5 +1,8 @@
 let main = (req,res,next) => {
-    res.render('index.html')
+    let userid = req.session.passport;
+    res.render('index.html',{
+        userid,
+    })
 }
 
 module.exports.main = main;
